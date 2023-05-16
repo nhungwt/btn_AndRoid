@@ -37,17 +37,17 @@ public class LoginActivity extends AppCompatActivity {
                 String userName = txtUserName.getText().toString();
                 String passWord = txtPassWord.getText().toString();
                 if (userName.equals("")) {
-                    txtUserName.setError("Moi nhap email");
+                    txtUserName.setError("Username is required");
                     txtUserName.requestFocus();
                 } else if (passWord.equals("")) {
-                    txtPassWord.setError("Moi nhap mat khau");
+                    txtPassWord.setError("Password is required");
                     txtPassWord.requestFocus();
                 }
                 if (db.checkLogin(userName, passWord) == true) {
-                    Toast.makeText(getApplicationContext(), "Dang nhap thanh cong ", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Login Successfully", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
                 } else {
-                    Toast.makeText(getApplicationContext(), "Email hoac mat khau khong chinh xac", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Usename or Password is not correct", Toast.LENGTH_SHORT).show();
                 }
             }
         });
