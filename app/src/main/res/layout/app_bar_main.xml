@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".service.MainActivity">
+
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbarlayout"
         android:layout_width="match_parent"
@@ -16,12 +17,14 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
-
     </com.google.android.material.appbar.AppBarLayout>
 
-    <include layout="@layout/content_main"
-        android:layout_below="@+id/appbarlayout"
+
+    <include
+        layout="@layout/content_main"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_below="@+id/appbarlayout"
+        android:layout_marginTop="-5dp" />
 
 </RelativeLayout>

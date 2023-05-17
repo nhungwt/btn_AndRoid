@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
         initEvents(toolbar);
     }
 
@@ -43,20 +44,22 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
         navigationView.setNavigationItemSelectedListener(this);
+
         navigationView.setCheckedItem(R.id.nav_ThongKe);
+
+        getSupportActionBar().setTitle("Thống Kê");
         loadFragment(new ThongKeFragment());
-
     }
 
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
+//    @Override
+//    public void onBackPressed() {
+//        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+//        if (drawer.isDrawerOpen(GravityCompat.START)) {
+//            drawer.closeDrawer(GravityCompat.START);
+//        } else {
+//            super.onBackPressed();
+//        }
+//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -66,11 +69,6 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-
         return super.onOptionsItemSelected(item);
     }
 
@@ -78,13 +76,17 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.nav_KhoanThu) {
+            getSupportActionBar().setTitle("Khoản Thu");
             loadFragment(new ThuFragment());
         } else if (id == R.id.nav_KhoanChi) {
+            getSupportActionBar().setTitle("Khoản Chi");
             loadFragment(new ChiFragment());
         } else if (id == R.id.nav_ThongKe) {
+            getSupportActionBar().setTitle("Thống Kê");
             loadFragment(new ThongKeFragment());
 //        }
 //        else if (id == R.id.nav_GioiThieu) {
+//            getSupportActionBar().setTitle("Giới Thiệu");
 //            loadFragment(new GioiThieuFragment());
         } else if (id == R.id.nav_Thoat) {
             thongBaoCloseApp();
@@ -108,16 +110,18 @@ public class MainActivity extends AppCompatActivity
 
     public void thongBaoCloseApp(){
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-        builder.setMessage("Bạn có muốn thoát ứng dụng?");
+        builder.setMessage("Bạn muốn thoát ứng dụng?");
         builder.setCancelable(true);
+
         builder.setPositiveButton(
-                "Vâng",
+                "Có",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         finish();
                         dialog.cancel();
                     }
                 });
+
         builder.setNegativeButton(
                 "Không",
                 new DialogInterface.OnClickListener() {
