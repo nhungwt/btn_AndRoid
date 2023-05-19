@@ -22,6 +22,8 @@ public class LoaiChiAdapter extends RecyclerView.Adapter<LoaiChiAdapter.MyViewHo
     private List<LoaiChi> loaiChis;
     private LayoutInflater mLayoutInflater;
     private Context mContext;
+
+
     public LoaiChiAdapter(Context context,List<LoaiChi> loaiChis) {
         this.loaiChis = loaiChis;
         this.mContext = context;

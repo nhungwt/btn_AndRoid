@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
+import java.util.Locale;
 
 import com.example.btl.R;
 import com.example.btl.fragment.LoaiThuFragment;
@@ -22,6 +23,8 @@ public class LoaiThuAdapter extends RecyclerView.Adapter<LoaiThuAdapter.MyViewHo
     private List<LoaiThu> loaiThus;
     private LayoutInflater mLayoutInflater;
     private Context mContext;
+
+
     public LoaiThuAdapter(Context context,List<LoaiThu> loaiThus) {
         this.loaiThus = loaiThus;
         this.mContext = context;
@@ -49,15 +52,20 @@ public class LoaiThuAdapter extends RecyclerView.Adapter<LoaiThuAdapter.MyViewHo
     }
 
     @Override
+    public int getItemCount() {
+        return loaiThus.size();
+    }
+
+    @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
         final LoaiThu loaiThu = loaiThus.get(position);
         holder.txtNameLoaiThu.setText(loaiThu.getTenLoaiThu());
-        holder.imgDeleteLoaiThu.setOnClickListener(new View.OnClickListener() {
 
+        holder.imgDeleteLoaiThu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
-                builder.setMessage("Bạn có muốn xóa Loại Thu "+ loaiThu.getTenLoaiThu() +" này không?");
+                builder.setMessage("Bạn có muốn xóa loại thu "+ loaiThu.getTenLoaiThu().toUpperCase(Locale.ROOT) +" này không?");
                 builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -80,10 +88,5 @@ public class LoaiThuAdapter extends RecyclerView.Adapter<LoaiThuAdapter.MyViewHo
                 LoaiThuFragment.loaiThuEdit(mContext, loaiThu.getId(), loaiThu.getTenLoaiThu());
             }
         });
-    }
-
-    @Override
-    public int getItemCount() {
-        return loaiThus.size();
     }
 }

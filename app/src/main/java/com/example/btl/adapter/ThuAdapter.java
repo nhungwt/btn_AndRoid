@@ -39,6 +39,8 @@ public class ThuAdapter extends RecyclerView.Adapter<ThuAdapter.MyViewHolder> {
     String donViTien;
     ShowSnackBar showSnackBar = new ShowSnackBar();
     View v;
+
+
     public ThuAdapter(Context context,List<Thu> thus) {
         this.thus = thus;
         this.mContext = context;
@@ -79,6 +81,7 @@ public class ThuAdapter extends RecyclerView.Adapter<ThuAdapter.MyViewHolder> {
                 KhoanThuFragment.showDialogFullThu(mContext,thu);
             }
         });
+
         holder.imgDeleteThu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -193,7 +196,7 @@ public class ThuAdapter extends RecyclerView.Adapter<ThuAdapter.MyViewHolder> {
         loaiThuArrayList = new ArrayList<LoaiThu>();
         loaiThuArrayList.add(new LoaiThu(0,"Chọn"));
 
-        KhoanThuFragment.dataSpinnerLoaiThu(loaiThuArrayList);
+        KhoanThuFragment.getDataSpinnerLoaiThu(loaiThuArrayList);
         SpLoaiThuAdapter spinAdapter = new SpLoaiThuAdapter(
                 mContext, loaiThuArrayList);
         spChonLoaiThu.setAdapter(spinAdapter);
@@ -210,6 +213,7 @@ public class ThuAdapter extends RecyclerView.Adapter<ThuAdapter.MyViewHolder> {
             }
         });
     }
+
     public void addItemsToSpinnerDonViTien(Spinner spChonDonVi) {
         donViTienArrayList = new ArrayList<String>();
         donViTienArrayList.add("Chọn");
@@ -231,6 +235,7 @@ public class ThuAdapter extends RecyclerView.Adapter<ThuAdapter.MyViewHolder> {
             }
         });
     }
+
     private void chonNgay(final EditText chonNgay){
         final Calendar calendar = Calendar.getInstance();
         int ngay = calendar.get(Calendar.DATE);

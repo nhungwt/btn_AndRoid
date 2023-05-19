@@ -34,6 +34,8 @@ public class LoaiChiFragment extends Fragment {
     static ArrayList<LoaiChi> loaiChiArrayList;
     static ShowSnackBar showSnackBar;
     static View vi;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

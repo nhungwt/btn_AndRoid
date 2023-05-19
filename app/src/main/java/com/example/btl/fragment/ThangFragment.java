@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import com.example.btl.R;
-import com.example.btl.adapter.spAdapter;
+import com.example.btl.adapter.SpAdapter;
 import com.example.btl.data.MyDatabaseHelper;
 import com.example.btl.model.ThangNam;
 
@@ -81,7 +81,7 @@ public class ThangFragment extends Fragment {
         for (int i = 1; i < 13; i++){
             thangNamArrayList.add(new ThangNam(i,"Tháng " + i));
         }
-        spAdapter adapter = new spAdapter(getContext(), thangNamArrayList);
+        SpAdapter adapter = new SpAdapter(getContext(), thangNamArrayList);
         spThang.setAdapter(adapter);
     }
     public String FormatCost(long cost){

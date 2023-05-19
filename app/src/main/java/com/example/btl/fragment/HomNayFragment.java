@@ -30,10 +30,12 @@ public class HomNayFragment extends Fragment {
     Calendar calendar = Calendar.getInstance();
     String ngayHienTai;
     SimpleDateFormat simpleDate = new SimpleDateFormat("dd/MM/yyyy");
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -42,6 +44,7 @@ public class HomNayFragment extends Fragment {
         initEvents();
         return v;
     }
+
     private void initEvents() {
         ngayHienTai();
         getChi();
@@ -49,22 +52,25 @@ public class HomNayFragment extends Fragment {
         txtTongChi.setText("Tổng Chi: " + FormatCost(tongChiNgay) + " VND");
         txtTongThu.setText("Tổng Thu: " + FormatCost(tongThuNgay) + " VND");
     }
+
     private void initControls(View v) {
         txtTongChi = v.findViewById(R.id.txtTongchiNgay);
         txtTongThu = v.findViewById(R.id.txtTongthuNgay);
         database = new MyDatabaseHelper(getContext());
     }
-    public String FormatCost(long cost){
+
+    public String FormatCost(long cost) {
         try {
             DecimalFormatSymbols symbols = new DecimalFormatSymbols();
             symbols.setDecimalSeparator(',');
             DecimalFormat decimalFormat = new DecimalFormat("###,###,###,###", symbols);
-            return decimalFormat.format(Integer.parseInt(cost+""));
-        }catch (Exception e) {
+            return decimalFormat.format(Integer.parseInt(cost + ""));
+        } catch (Exception e) {
             return cost + "";
         }
     }
-    public void getChi(){
+
+    public void getChi() {
         Cursor cursor = database.GetDate("SELECT * FROM chi WHERE deleteFlag = '0'");
         int usd = 0;
         int toVnd = 23255;
@@ -76,12 +82,12 @@ public class HomNayFragment extends Fragment {
             String ngayThang = cursor.getString(4);
             try {
                 Date date = simpleDate.parse(ngayThang);
-                if (simpleDate.format(date).contains(ngayHienTai)){
-                    if (donViChi.equalsIgnoreCase("USD")){
+                if (simpleDate.format(date).contains(ngayHienTai)) {
+                    if (donViChi.equalsIgnoreCase("USD")) {
                         usd = usd + dinhMucChi;
                         vnd = (usd * toVnd);
                     }
-                    if (donViChi.equalsIgnoreCase("VND")){
+                    if (donViChi.equalsIgnoreCase("VND")) {
                         vietNamDong = vietNamDong + dinhMucChi;
                     }
                 }
@@ -92,7 +98,8 @@ public class HomNayFragment extends Fragment {
         cursor.close();
         tongChiNgay = vnd + vietNamDong;
     }
-    public void getThu(){
+
+    public void getThu() {
         Cursor cursor = database.GetDate("SELECT * FROM thu WHERE deleteFlag = '0'");
         int usd = 0;
         int toVnd = 23255;
@@ -122,11 +129,11 @@ public class HomNayFragment extends Fragment {
 
     }
 
-    public void ngayHienTai(){
+    public void ngayHienTai() {
         int mYear = calendar.get(Calendar.YEAR);
         int mMonth = calendar.get(Calendar.MONTH);
         int mDay = calendar.get(Calendar.DAY_OF_MONTH);
-        ngayHienTai = mDay + "/" + (mMonth+1) + "/" + mYear;
+        ngayHienTai = mDay + "/" + (mMonth + 1) + "/" + mYear;
         Date date = null;
         try {
             date = simpleDate.parse(ngayHienTai);

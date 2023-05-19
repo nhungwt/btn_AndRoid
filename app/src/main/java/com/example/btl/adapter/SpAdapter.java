@@ -13,13 +13,13 @@ import java.util.ArrayList;
 import com.example.btl.R;
 import com.example.btl.model.ThangNam;
 
-public class spAdapter extends ArrayAdapter<ThangNam> {
+public class SpAdapter extends ArrayAdapter<ThangNam> {
     private Context context;
     private ArrayList<ThangNam> data;
     public Resources res;
     private LayoutInflater inflater;
 
-    public spAdapter(Context context, ArrayList<ThangNam> objects) {
+    public SpAdapter(Context context, ArrayList<ThangNam> objects) {
         super(context, R.layout.custom_sp, objects);
 
         this.context = context;
@@ -33,6 +33,7 @@ public class spAdapter extends ArrayAdapter<ThangNam> {
     public View getDropDownView(int position, View convertView, ViewGroup parent) {
         return getCustomView(position, convertView, parent);
     }
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         return getCustomView(position, convertView, parent);

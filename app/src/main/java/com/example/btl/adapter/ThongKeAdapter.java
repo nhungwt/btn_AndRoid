@@ -12,6 +12,7 @@ public class ThongKeAdapter extends FragmentPagerAdapter {
     public ThongKeAdapter(FragmentManager fm) {
         super(fm);
     }
+
     @Override
     public Fragment getItem(int position) {
         switch (position) {
@@ -30,6 +31,7 @@ public class ThongKeAdapter extends FragmentPagerAdapter {
     public int getCount() {
         return 3;
     }
+
     @Override
     public CharSequence getPageTitle(int position) {
         switch (position) {

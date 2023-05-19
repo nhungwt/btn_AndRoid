@@ -12,6 +12,7 @@ public class PageAdapter extends FragmentPagerAdapter {
     public PageAdapter(FragmentManager fm) {
         super(fm);
     }
+
     @Override
     public Fragment getItem(int position) {
         switch (position) {
@@ -27,6 +28,7 @@ public class PageAdapter extends FragmentPagerAdapter {
     public int getCount() {
         return 2;
     }
+
     @Override
     public CharSequence getPageTitle(int position) {
         switch (position) {

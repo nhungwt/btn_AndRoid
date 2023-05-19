@@ -22,6 +22,7 @@ public class ThuFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_thu, null);
         final TabLayout tabLayout = v.findViewById(R.id.main_tab);
         final ViewPager viewPager = v.findViewById(R.id.main_viewpager);
+
         PageAdapter pageAdapter = new PageAdapter(getChildFragmentManager());
         viewPager.setAdapter(pageAdapter);
         tabLayout.setupWithViewPager(viewPager);

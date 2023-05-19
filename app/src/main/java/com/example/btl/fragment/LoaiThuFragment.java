@@ -35,6 +35,7 @@ public class LoaiThuFragment extends Fragment {
     static ArrayList<LoaiThu> loaiThuArrayList;
     static ShowSnackBar showSnackBar;
     static View vi;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -70,6 +71,7 @@ public class LoaiThuFragment extends Fragment {
                 dialog.dismiss();
             }
         });
+
         btnThem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -92,6 +94,7 @@ public class LoaiThuFragment extends Fragment {
     private static void loadData(){
         Cursor cursor = database.GetDate("SELECT  * FROM loaithu WHERE deleteGlag = 0");
         loaiThuArrayList.clear();
+
         while (cursor.moveToNext()) {
             int id = cursor.getInt(0);
             String tenLoaiThu = cursor.getString(1);

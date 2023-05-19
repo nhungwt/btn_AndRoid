@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import com.example.btl.R;
-import com.example.btl.adapter.spAdapter;
+import com.example.btl.adapter.SpAdapter;
 import com.example.btl.data.MyDatabaseHelper;
 import com.example.btl.model.ThangNam;
 
@@ -77,11 +77,11 @@ public class NamFragment extends Fragment {
         database = new MyDatabaseHelper(getContext());
 
         arrayList = new ArrayList<>();
-        arrayList.add(new ThangNam(1, "Chọn năm"));
-        arrayList.add(new ThangNam(1, "2020"));
-        arrayList.add(new ThangNam(1, "2021"));
+        arrayList.add(new ThangNam(0, "Chọn năm"));
         arrayList.add(new ThangNam(1, "2022"));
-        spAdapter adapter = new spAdapter(getContext(), arrayList);
+        arrayList.add(new ThangNam(2, "2023"));
+        arrayList.add(new ThangNam(3, "2024"));
+        SpAdapter adapter = new SpAdapter(getContext(), arrayList);
         spinner.setAdapter(adapter);
     }
     public String FormatCost(long cost){

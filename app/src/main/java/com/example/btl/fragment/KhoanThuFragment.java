@@ -49,6 +49,8 @@ public class KhoanThuFragment extends Fragment {
     String donViTien;
     static MyDatabaseHelper database;
     ShowSnackBar showSnackBar;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -76,11 +78,11 @@ public class KhoanThuFragment extends Fragment {
         database = new MyDatabaseHelper(getContext());
         thuArrayList = new ArrayList<>();
 
-        thuAdapter = new ThuAdapter(getContext(),thuArrayList);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext().getApplicationContext());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerViewThu.setLayoutManager(layoutManager);
         recyclerViewThu.setItemAnimator(new DefaultItemAnimator());
+        thuAdapter = new ThuAdapter(getContext(),thuArrayList);
         recyclerViewThu.setAdapter(thuAdapter);
 
         showSnackBar = new ShowSnackBar();
@@ -129,11 +131,11 @@ public class KhoanThuFragment extends Fragment {
                 String edtSoTien = edtThemSoTien.getText().toString();
                 String edtNgayThu = edtThemNgayThu.getText().toString();
                 if (edtKhoanthu.isEmpty()){
-                    edtThemKhoanThu.setError("Không được bỏ trống");
+                    edtThemKhoanThu.setError("Không được bỏ trống Khoản thu");
                 }else if (edtSoTien.isEmpty()){
-                    edtThemSoTien.setError("Không được bỏ trống");
+                    edtThemSoTien.setError("Không được bỏ trống Số tiền");
                 }else if (edtNgayThu.isEmpty()){
-                    edtThemNgayThu.setError("Không được bỏ trống");
+                    edtThemNgayThu.setError("Không được bỏ trống Ngày");
                 }else {
                     edtThemKhoanThu.setError(null);
                     edtThemSoTien.setError(null);
@@ -152,12 +154,13 @@ public class KhoanThuFragment extends Fragment {
 
         dialog.show();
     }
+
     public void addItemsToSpinnerLoaiThu(Spinner spChonLoaiThu) {
 
         loaiThuArrayList = new ArrayList<LoaiThu>();
         loaiThuArrayList.add(new LoaiThu(0,"Chọn"));
 
-        dataSpinnerLoaiThu(loaiThuArrayList);
+        getDataSpinnerLoaiThu(loaiThuArrayList);
 
         SpLoaiThuAdapter spinAdapter = new SpLoaiThuAdapter(
                 getContext(), loaiThuArrayList);
@@ -174,6 +177,7 @@ public class KhoanThuFragment extends Fragment {
             }
         });
     }
+
     public void addItemsToSpinnerDonViTien(Spinner spChonDonVi) {
         donViTienArrayList = new ArrayList<String>();
         donViTienArrayList.add("Chọn");
@@ -195,7 +199,8 @@ public class KhoanThuFragment extends Fragment {
             }
         });
     }
-    public static void dataSpinnerLoaiThu(ArrayList<LoaiThu> loaiThuArrayList){
+
+    public static void getDataSpinnerLoaiThu(ArrayList<LoaiThu> loaiThuArrayList){
         Cursor cursor = database.GetDate("SELECT  * FROM loaithu WHERE deleteGlag = 0");
         while (cursor.moveToNext()){
             int idLoaiThu = cursor.getInt(0);
@@ -203,6 +208,7 @@ public class KhoanThuFragment extends Fragment {
             loaiThuArrayList.add(new LoaiThu(idLoaiThu,TenLoaiThu));
         }
     }
+
     private void chonNgay(final EditText chonNgay){
         final Calendar calendar = Calendar.getInstance();
         int ngay = calendar.get(Calendar.DATE);
@@ -218,6 +224,7 @@ public class KhoanThuFragment extends Fragment {
         },nam,thang,ngay);
         datePickerDialog.show();
     }
+
     public static void loadData(){
         Cursor cursor = database.GetDate("SELECT * FROM thu WHERE deleteFlag = '0'");
         thuArrayList.clear();
@@ -236,6 +243,7 @@ public class KhoanThuFragment extends Fragment {
         }
         thuAdapter.notifyDataSetChanged();
     }
+
     public static void showDialogFullThu(Context context, Thu thu){
         final Dialog dialog = new Dialog(context);
         dialog.setContentView(R.layout.dialog_xem_full_thu);
@@ -266,14 +274,17 @@ public class KhoanThuFragment extends Fragment {
 
         dialog.show();
     }
+
     public static void deleteKhoanThu(int id){
         database.QueryData("UPDATE thu SET deleteFlag = 1 WHERE id = '" + id + "'");
         loadData();
     }
+
     public static void editKhoanThu(int id, String edtKhoanthu, String edtSoTien, String edtNgayThu, int idLoaiThu, String donViTien){
         database.QueryData("UPDATE thu SET tenMucThu = '" + edtKhoanthu + "' , dinhMucThu = '" + edtSoTien + "' , thoiDiemApDungThu = '" + edtNgayThu + "' , idLoaiThu = " + idLoaiThu + " , donViThu = '" + donViTien + "' WHERE id = '" + id + "'");
         loadData();
     }
+
     public static String FormatCost(long cost){
         try {
             DecimalFormatSymbols symbols = new DecimalFormatSymbols();
@@ -284,6 +295,7 @@ public class KhoanThuFragment extends Fragment {
             return cost + "";
         }
     }
+
     public static String loaiThu(int idLoaiThu){
         Cursor cursor = database.GetDate("SELECT * FROM loaithu WHERE id = '"+ idLoaiThu +"'");
         while (cursor.moveToNext()) {

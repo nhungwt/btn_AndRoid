@@ -57,14 +57,15 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
         return check;
     }
 
+
     // ---Table Khoan Thu---
     private static final String KEY_NAME_TABLE_LOAITHU = "loaithu";
     private static final String KEY_TABLE_ID_LOAITHU = "id";
     private static final String KEY_TABLE_NAME_LOAITHU = "tenLoaiThu";
     private static final String KEY_TABLE_DELETEFLAG_LOAITHU = "deleteGlag";
 
-    // ---Table Thu---
 
+    // ---Table Thu---
     private static final String KEY_NAME_TABLE_THU = "thu";
     private static final String KEY_TABLE_ID_THU = "id";
     private static final String KEY_TABLE_TENMUCTHU_THU = "tenMucThu";
@@ -75,15 +76,15 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     private static final String KEY_TABLE_DELETEFLAG_THU = "deleteFlag";
     private static final String KEY_TABLE_IDLOAITHU_THU = "idLoaiThu";
 
-    // ---Table Loai Chi ---
 
+    // ---Table Loai Chi ---
     private static final String KEY_NAME_TABLE_LOAICHI = "loaiChi";
     private static final String KEY_TABLE_ID_LOAICHI = "id";
     private static final String KEY_TABLE_NAME_LOAICHI = "tenLoaiChi";
     private static final String KEY_TABLE_DELETEFLAG_LOAICHI = "deleteFlag";
 
-    // ---Table Chi---
 
+    // ---Table Chi---
     private static final String KEY_NAME_TABLE_CHI = "chi";
     private static final String KEY_TABLE_ID_CHI = "id";
     private static final String KEY_TABLE_TENMUCCHI_CHI = "tenMucChi";
@@ -95,13 +96,39 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     private static final String KEY_TABLE_IDLOAICHI_CHI = "idLoaiChi";
 
 
-    private static final String CREATE_CLASS_TABLE_LOAITHU = "CREATE TABLE " + KEY_NAME_TABLE_LOAITHU + "(" + KEY_TABLE_ID_LOAITHU + " INTEGER PRIMARY KEY AUTOINCREMENT," + KEY_TABLE_NAME_LOAITHU + " TEXT," + KEY_TABLE_DELETEFLAG_LOAITHU + " INTEGER" + ")";
+    private static final String CREATE_CLASS_TABLE_LOAITHU =
+            "CREATE TABLE " + KEY_NAME_TABLE_LOAITHU +
+                        "(" + KEY_TABLE_ID_LOAITHU + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                            + KEY_TABLE_NAME_LOAITHU + " TEXT,"
+                            + KEY_TABLE_DELETEFLAG_LOAITHU + " INTEGER" + ")";
 
-    private static final String CREATE_CLASS_TABLE_THU = "CREATE TABLE " + KEY_NAME_TABLE_THU + "(" + KEY_TABLE_ID_THU + " INTEGER PRIMARY KEY AUTOINCREMENT," + KEY_TABLE_TENMUCTHU_THU + " TEXT," + KEY_TABLE_DINHMUCTHU_THU + " DECIMAL," + KEY_TABLE_DONVITHU_THU + " TEXT," + KEY_TABLE_THOIDIEMAPDUNGTHU_THU + " DATETIME," + KEY_TABLE_DANHGIA_THU + " INTEGER," + KEY_TABLE_DELETEFLAG_THU + " INTEGER," + KEY_TABLE_IDLOAITHU_THU + " INTEGER" + ")";
+    private static final String CREATE_CLASS_TABLE_THU =
+            "CREATE TABLE " + KEY_NAME_TABLE_THU + "("
+                            + KEY_TABLE_ID_THU + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                            + KEY_TABLE_TENMUCTHU_THU + " TEXT,"
+                            + KEY_TABLE_DINHMUCTHU_THU + " DECIMAL,"
+                            + KEY_TABLE_DONVITHU_THU + " TEXT,"
+                            + KEY_TABLE_THOIDIEMAPDUNGTHU_THU + " DATETIME,"
+                            + KEY_TABLE_DANHGIA_THU + " INTEGER,"
+                            + KEY_TABLE_DELETEFLAG_THU + " INTEGER,"
+                            + KEY_TABLE_IDLOAITHU_THU + " INTEGER" + ")";
 
-    private static final String CREATE_CLASS_TABLE_LOAICHI = "CREATE TABLE " + KEY_NAME_TABLE_LOAICHI + "(" + KEY_TABLE_ID_LOAICHI + " INTEGER PRIMARY KEY AUTOINCREMENT," + KEY_TABLE_NAME_LOAICHI + " TEXT," + KEY_TABLE_DELETEFLAG_LOAICHI + " INTEGER" + ")";
+    private static final String CREATE_CLASS_TABLE_LOAICHI =
+            "CREATE TABLE " + KEY_NAME_TABLE_LOAICHI + "("
+                            + KEY_TABLE_ID_LOAICHI + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                            + KEY_TABLE_NAME_LOAICHI + " TEXT,"
+                            + KEY_TABLE_DELETEFLAG_LOAICHI + " INTEGER" + ")";
 
-    private static final String CREATE_CLASS_TABLE_CHI = "CREATE TABLE " + KEY_NAME_TABLE_CHI + "(" + KEY_TABLE_ID_CHI + " INTEGER PRIMARY KEY AUTOINCREMENT," + KEY_TABLE_TENMUCCHI_CHI + " TEXT," + KEY_TABLE_DINHMUCCHI_CHI + " DECIMAL," + KEY_TABLE_DONVICHI_CHI + " TEXT," + KEY_TABLE_THOIDIEMAPDUNGCHI_CHI + " DATETIME," + KEY_TABLE_DANHGIA_CHI + " INTEGER," + KEY_TABLE_DELETEFLAG_CHI + " INTEGER," + KEY_TABLE_IDLOAICHI_CHI + " INTEGER" + ")";
+    private static final String CREATE_CLASS_TABLE_CHI =
+            "CREATE TABLE " + KEY_NAME_TABLE_CHI + "("
+                            + KEY_TABLE_ID_CHI + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                            + KEY_TABLE_TENMUCCHI_CHI + " TEXT,"
+                            + KEY_TABLE_DINHMUCCHI_CHI + " DECIMAL,"
+                            + KEY_TABLE_DONVICHI_CHI + " TEXT,"
+                            + KEY_TABLE_THOIDIEMAPDUNGCHI_CHI + " DATETIME,"
+                            + KEY_TABLE_DANHGIA_CHI + " INTEGER,"
+                            + KEY_TABLE_DELETEFLAG_CHI + " INTEGER,"
+                            + KEY_TABLE_IDLOAICHI_CHI + " INTEGER" + ")";
 
     public MyDatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
